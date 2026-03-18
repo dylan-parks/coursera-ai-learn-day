@@ -1,42 +1,26 @@
-import { Fragment } from 'react'
-import type { PageId } from '../types'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../lib/auth'
 
-const crumbs: Record<PageId, string[]> = {
-  'landing': ['AI Prototyping'],
-  'tutorial-discovery': ['AI Prototyping', 'Discovery'],
-  'tutorial-dashboard': ['AI Prototyping', 'Dashboard'],
-  'tutorial-courseframe': ['AI Prototyping', 'Course Frame'],
-  'tutorial-internal': ['AI Prototyping', 'Internal Hub'],
-}
-
-interface NavProps {
-  currentPage: PageId
-  navigate: (id: PageId) => void
-}
-
-export default function Nav({ currentPage, navigate }: NavProps) {
-  const parts = crumbs[currentPage]
+export default function Nav() {
+  const navigate = useNavigate()
+  const { user, logout } = useAuth()
 
   return (
     <nav>
-      <div className="brand" onClick={() => navigate('landing')}>
+      <div className="brand" onClick={() => navigate('/')}>
         coursera<span>.design</span>
       </div>
-      <div className="breadcrumb">
-        {parts.map((p, i) => (
-          <Fragment key={i}>
-            {i < parts.length - 1 ? (
-              <>
-                <span>{p}</span>
-                <span className="bc-sep">›</span>
-              </>
-            ) : (
-              <span className="bc-cur">{p}</span>
-            )}
-          </Fragment>
-        ))}
-      </div>
-      <div className="avatar">YN</div>
+      {user && (
+        <div className="flex items-center gap-12">
+          <span className="cds-body-secondary text-grey-600">{user.name}</span>
+          <button
+            className="cds-body-tertiary text-grey-400 hover:text-grey-975 bg-transparent border-none cursor-pointer"
+            onClick={logout}
+          >
+            Sign out
+          </button>
+        </div>
+      )}
     </nav>
   )
 }

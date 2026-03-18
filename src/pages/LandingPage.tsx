@@ -1,18 +1,39 @@
-import { useState } from 'react'
-import type { PageId } from '../types'
+import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useSubmissions } from '../lib/submissions'
+import SubmitDialog from '../components/SubmitDialog'
 
-interface LandingPageProps {
-  navigate: (id: PageId) => void
-}
+export default function LandingPage() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { submissions, pendingCard, submitProject } = useSubmissions()
 
-export default function LandingPage({ navigate }: LandingPageProps) {
-  const [submitted, setSubmitted] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
 
-  const handleSubmit = () => {
-    setSubmitted(true)
-    setTimeout(() => {
-      document.getElementById('gallery-section')?.scrollIntoView({ behavior: 'smooth' })
-    }, 0)
+  useEffect(() => {
+    const scrollTo = (location.state as { scrollTo?: string })?.scrollTo
+    if (scrollTo) {
+      setTimeout(() => {
+        document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }, [location.state])
+
+  useEffect(() => {
+    if (pendingCard) {
+      setTimeout(() => {
+        document.getElementById('gallery-section')?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
+  }, [pendingCard])
+
+  const handleSubmit = (data: Parameters<typeof submitProject>[0]) => {
+    submitProject(data)
+  }
+
+  const formatTimestamp = (iso: string) => {
+    const d = new Date(iso)
+    return `${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
   }
 
   return (
@@ -22,9 +43,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="lhero-title">AI Prototyping<br /><em>Learning Day.</em></div>
         <div className="lhero-sub">A full workday to learn Cursor — one of the leading AI prototyping tools right now. Pick a surface, follow a tutorial, build something real using Cursor and the Figma MCP workflow.</div>
         <button
+          className="bg-blue-700 hover:bg-blue-800 text-white border-none rounded-8 cds-action-secondary cursor-pointer inline-flex items-center gap-8"
+          style={{ padding: '12px 20px', fontFamily: 'inherit' }}
           onClick={() => document.getElementById('surface-section')?.scrollIntoView({ behavior: 'smooth' })}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#0056D2', color: '#fff', border: 'none', borderRadius: '8px', padding: '12px 20px', fontSize: '14px', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit' }}
-        >Choose your surface →</button>
+        >Choose your surface</button>
         <div className="lhero-meta">
           <div><div className="stat-val">1 day</div><div className="stat-lbl">Any day, Mar 23 – Apr 3</div></div>
           <div><div className="stat-val">Cursor</div><div className="stat-lbl">Using Claude · Figma MCP</div></div>
@@ -98,10 +120,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="sec-title">What do you want to build?</div>
         <div className="sec-body">Each boilerplate is a working starting point. Pick the template closest to your area of work, or simply the one you're most energized by.</div>
         <div className="surface-grid">
-          <div className="sc"><div className="sc-thumb a"><div className="sc-tag">A · Discovery</div></div><div className="sc-body"><div className="sc-label">Boilerplate A</div><div className="sc-title">Course Discovery</div><div className="sc-desc">A conversational landing page. Build the AI-powered discovery experience — loading state, results view, and course grid.</div><div className="sc-from">Starting from: <span>Coursera homepage · conversational input</span></div><button className="sc-btn" onClick={() => navigate('tutorial-discovery')}>Start tutorial →</button></div></div>
-          <div className="sc"><div className="sc-thumb b"><div className="sc-tag">B · Learning</div></div><div className="sc-body"><div className="sc-label">Boilerplate B</div><div className="sc-title">My Learning Dashboard</div><div className="sc-desc">The logged-in home page. Redesign how learners track progress, pick up where they left off, and see what's next.</div><div className="sc-from">Starting from: <span>Logged-in home · My Learning</span></div><button className="sc-btn" onClick={() => navigate('tutorial-dashboard')}>Start tutorial →</button></div></div>
-          <div className="sc"><div className="sc-thumb c"><div className="sc-tag">C · Course Frame</div></div><div className="sc-body"><div className="sc-label">Boilerplate C</div><div className="sc-title">Learning Environment</div><div className="sc-desc">A three-panel course shell: reading, video, and a working AI chatbot. Challenge the hierarchy.</div><div className="sc-from">Starting from: <span>Course frame · Data, Data, Everywhere</span></div><button className="sc-btn" onClick={() => navigate('tutorial-courseframe')}>Start tutorial →</button></div></div>
-          <div className="sc"><div className="sc-thumb d"><div className="sc-tag">D · Internal</div></div><div className="sc-body"><div className="sc-label">Boilerplate D</div><div className="sc-title">Design Team Hub</div><div className="sc-desc">This site. An internal resource and community hub for Design and Research, aimed at design managers and leadership.</div><div className="sc-from">Starting from: <span>coursera.design · this page</span></div><button className="sc-btn" onClick={() => navigate('tutorial-internal')}>Start tutorial →</button></div></div>
+          <div className="sc"><div className="sc-thumb a"><div className="sc-tag">A · Discovery</div></div><div className="sc-body"><div className="sc-label">Boilerplate A</div><div className="sc-title">Course Discovery</div><div className="sc-desc">A conversational landing page. Build the AI-powered discovery experience — loading state, results view, and course grid.</div><div className="sc-from">Starting from: <span>Coursera homepage · conversational input</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/discovery')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb b"><div className="sc-tag">B · Learning</div></div><div className="sc-body"><div className="sc-label">Boilerplate B</div><div className="sc-title">My Learning Dashboard</div><div className="sc-desc">The logged-in home page. Redesign how learners track progress, pick up where they left off, and see what's next.</div><div className="sc-from">Starting from: <span>Logged-in home · My Learning</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/dashboard')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb c"><div className="sc-tag">C · Course Frame</div></div><div className="sc-body"><div className="sc-label">Boilerplate C</div><div className="sc-title">Learning Environment</div><div className="sc-desc">A three-panel course shell: reading, video, and a working AI chatbot. Challenge the hierarchy.</div><div className="sc-from">Starting from: <span>Course frame · Data, Data, Everywhere</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/courseframe')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb d"><div className="sc-tag">D · Internal</div></div><div className="sc-body"><div className="sc-label">Boilerplate D</div><div className="sc-title">Design Team Hub</div><div className="sc-desc">This site. An internal resource and community hub for Design and Research, aimed at design managers and leadership.</div><div className="sc-from">Starting from: <span>coursera.design · this page</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/internal')}>Start tutorial</button></div></div>
         </div>
       </div>
 
@@ -109,38 +131,52 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="sec-label">Help</div>
         <div className="sec-title">Stuck? Ask in Slack.</div>
         <div className="sec-body">Post errors, questions, and things that surprised you. Others will likely have the same questions.</div>
-        <div className="slack-box"><strong>Slack: #design-ai-prototyping [TBD]</strong><p>Join before your learning day.</p></div>
+        <div className="slack-box"><strong>Slack: #design-research-ai-learning-day</strong><p>Join before your learning day.</p></div>
       </div>
 
       <div className="ls">
         <div className="sec-label">End of day</div>
         <div className="sec-title">Share what you made</div>
         <div className="sec-body">Submit a short reflection. Your submission appears in the gallery below so others can see who has been through this, what they built, and reach out directly.</div>
-        <div className="submit-form">
-          <div className="sf-row">
-            <div className="sf-field"><div className="sf-label">What did you like or learn?</div><textarea placeholder="What clicked, surprised you, or felt genuinely useful..."></textarea></div>
-            <div className="sf-field"><div className="sf-label">What did you struggle with?</div><textarea placeholder="Friction points are the most useful feedback..."></textarea></div>
-          </div>
-          <div className="sf-field"><div className="sf-label">Describe what you built</div><input type="text" placeholder="A short description — required even without a file..." /></div>
-          <div className="sf-upload">Drop a screenshot, GIF, or screen recording here · optional</div>
-          <button className="sf-btn" onClick={handleSubmit}>Submit reflection →</button>
-        </div>
+        <button className="sf-btn" style={{ marginTop: '24px', maxWidth: '320px' }} onClick={() => setDialogOpen(true)}>Share what you made</button>
       </div>
+
+      <SubmitDialog open={dialogOpen} onClose={() => setDialogOpen(false)} onSubmit={handleSubmit} />
 
       <div className="ls" id="gallery-section">
         <div className="sec-label">From the team</div>
         <div className="sec-title">What people built</div>
         <div className="sec-body">Submissions appear here as people complete the day.</div>
-        {submitted ? (
+        {(pendingCard || submissions.length > 0) ? (
           <div className="gallery-grid">
-            <div className="gallery-card">
-              <div className="gallery-thumb">🖥️</div>
-              <div className="gallery-body">
-                <div className="gallery-name">You</div>
-                <div className="gallery-desc">Just submitted — your work will appear here.</div>
-                <div className="gallery-ts">Today · just now</div>
+            {pendingCard && (
+              <div className="gallery-card gallery-card-loading">
+                <div className="gallery-thumb skeleton-shimmer" />
+                <div className="gallery-body">
+                  {pendingCard.name && <div className="gallery-name">{pendingCard.name}</div>}
+                  <div className="gallery-desc">{pendingCard.description}</div>
+                  <div className="gallery-ts">Uploading...</div>
+                </div>
               </div>
-            </div>
+            )}
+            {submissions.map(s => (
+              <div className="gallery-card" key={s.id}>
+                {s.file_url ? (
+                  s.file_url.match(/\.(mp4|webm|mov)$/i) ? (
+                    <video className="gallery-media" src={s.file_url} muted playsInline onMouseOver={e => (e.target as HTMLVideoElement).play()} onMouseOut={e => { const v = e.target as HTMLVideoElement; v.pause(); v.currentTime = 0 }} />
+                  ) : (
+                    <img className="gallery-media" src={s.file_url} alt={s.description} />
+                  )
+                ) : (
+                  <div className="gallery-thumb">🖥️</div>
+                )}
+                <div className="gallery-body">
+                  {s.name && <div className="gallery-name">{s.name}</div>}
+                  <div className="gallery-desc">{s.description}</div>
+                  <div className="gallery-ts">{formatTimestamp(s.created_at)}</div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : (
           <div className="gallery-empty">

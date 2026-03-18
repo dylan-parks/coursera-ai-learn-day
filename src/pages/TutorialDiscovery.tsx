@@ -1,10 +1,12 @@
-import type { PageId } from '../types'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import SubmitDialog from '../components/SubmitDialog'
+import { useSubmissions } from '../lib/submissions'
 
-interface TutorialDiscoveryProps {
-  navigate: (id: PageId) => void
-}
-
-export default function TutorialDiscovery({ navigate }: TutorialDiscoveryProps) {
+export default function TutorialDiscovery() {
+  const navigate = useNavigate()
+  const { submitProject } = useSubmissions()
+  const [dialogOpen, setDialogOpen] = useState(false)
   return (
     <>
       <div className="t-hero">
@@ -13,7 +15,7 @@ export default function TutorialDiscovery({ navigate }: TutorialDiscoveryProps) 
         <div className="t-hero-meta">Responsive web · 3 to 6 hours</div>
       </div>
       <div className="t-body">
-        <button className="back-btn" onClick={() => { navigate('landing'); setTimeout(() => document.getElementById('surface-section')?.scrollIntoView({ behavior: 'smooth' }), 100) }}>← Choose a different surface</button>
+        <button className="back-btn" onClick={() => navigate('/', { state: { scrollTo: 'surface-section' } })}>Choose a different surface</button>
         <div className="brief"><div className="brief-lbl">Brief</div><div className="brief-txt">Coursera's homepage has a search bar. But search assumes the learner already knows what they want — and most don't. Your job today: build a discovery experience that starts with a conversation. The boilerplate gives you a working landing page with a conversational input. Phase 2 asks you to bring the response to life — a loading state, then a two-panel view where an AI overview and a course grid appear together. Make it feel like the platform is thinking with the learner, not just matching keywords.</div></div>
         <div className="t-img"><span style={{ fontSize: '24px' }}>🖼️</span><span className="lbl">Screenshot placeholder · Boilerplate A running in browser</span></div>
 
@@ -89,10 +91,11 @@ export default function TutorialDiscovery({ navigate }: TutorialDiscoveryProps) 
           <div className="ri">What would you explore next if you had another hour?</div>
         </div>
         <div style={{ borderTop: '0.5px solid #E8E8E8', paddingTop: '32px', marginTop: '32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <div><div style={{ fontSize: '14px', fontWeight: 500, marginBottom: '4px' }}>You're done. Share what you made.</div><div style={{ fontSize: '13px', color: '#9AA0AA' }}>Your submission appears in the team gallery — others can see your work and reach out.</div></div>
-          <button onClick={() => { navigate('landing'); setTimeout(() => document.getElementById('gallery-section')?.scrollIntoView({ behavior: 'smooth' }), 100) }} style={{ background: '#0056D2', color: '#fff', border: 'none', borderRadius: '8px', padding: '12px 20px', fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0 }}>Submit your project →</button>
+          <div><div className="cds-subtitle-md">You're done. Share what you made.</div><div className="cds-body-secondary text-grey-600 mt-4">Your submission appears in the team gallery — others can see your work and reach out.</div></div>
+          <button onClick={() => setDialogOpen(true)} style={{ background: '#0056D2', color: '#fff', border: 'none', borderRadius: '8px', padding: '12px 20px', fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0 }}>Submit your project</button>
         </div>
       </div>
+      <SubmitDialog open={dialogOpen} onClose={() => setDialogOpen(false)} onSubmit={(data) => { submitProject(data); navigate('/', { state: { scrollTo: 'gallery-section' } }) }} />
     </>
   )
 }
