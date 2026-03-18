@@ -319,6 +319,24 @@ nav {
   left: 0;
   color: var(--color-grey-300);
 }
+.setup-item-optional {
+  border-style: dashed;
+}
+.setup-num.optional {
+  background: var(--color-grey-50);
+  color: var(--color-grey-400);
+}
+.setup-optional-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-grey-400);
+  background: var(--color-grey-50);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
 
 .surface-grid {
   display: grid;
@@ -629,11 +647,7 @@ nav {
 }
 
 .brief {
-  border: 0.5px solid var(--color-grey-100);
-  border-radius: 8px;
-  padding: 16px 20px;
   margin-bottom: 24px;
-  background: var(--color-grey-25);
 }
 .brief-lbl {
   font-size: 10px;
@@ -880,6 +894,34 @@ nav {
   border-radius: 10px;
   padding: 20px 24px;
   margin-bottom: 32px;
+}
+
+.done-banner {
+  background: var(--color-blue-25);
+  border: 0.5px solid var(--color-blue-100);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.done-banner-btn {
+  background: var(--color-blue-700);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.done-banner-btn:hover {
+  background: var(--color-blue-800);
 }
 
 .optional-block {

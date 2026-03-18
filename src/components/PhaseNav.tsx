@@ -5,6 +5,7 @@ const phases = [
   { id: 'phase-1', label: 'Phase 1' },
   { id: 'phase-2', label: 'Phase 2' },
   { id: 'phase-3', label: 'Phase 3' },
+  { id: 'phase-4', label: 'Phase 4' },
 ]
 
 export default function PhaseNav() {

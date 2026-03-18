@@ -99,18 +99,18 @@ export default function LandingPage() {
             </div>
           </div></div>
           <div className="setup-item"><div className="setup-num">2</div><div>
-            <div className="setup-title">Download Google Drive for Mac</div>
-            <div className="setup-body">You will use Google Drive for Desktop to access and manage your boilerplate files.
-              <ul className="setup-steps">
-                <li><span className="n">1.</span> Download Google Drive for Desktop from <strong>drive.google.com/download</strong>.</li>
-                <li><span className="n">2.</span> Sign in with your Coursera Google account via <strong>OKTA</strong>.</li>
-                <li><span className="n">3.</span> Once running, a Google Drive folder will appear in your Finder sidebar. Your boilerplate files will live here.</li>
-              </ul>
-            </div>
-          </div></div>
-          <div className="setup-item"><div className="setup-num">3</div><div>
             <div className="setup-title">Block your calendar and loop in your manager</div>
             <div className="setup-body">Pick one day between March 23 and April 3, block it in your calendar, and let your manager know. If you are having trouble getting the time approved, post in the Slack channel.</div>
+          </div></div>
+          <div className="setup-item setup-item-optional"><div className="setup-num optional">?</div><div>
+            <div className="setup-title">Optional: Set up GitHub and Vercel <span className="setup-optional-tag">Optional</span></div>
+            <div className="setup-body">Not required for the learning day itself, but worth doing in advance if you want to share your prototype as a live URL with stakeholders afterward. This may require manager approval to create accounts on company devices or under a company email.
+              <ul className="setup-steps">
+                <li><span className="n">1.</span> Create a GitHub account at <strong>github.com</strong> using your Coursera email.</li>
+                <li><span className="n">2.</span> Create a Vercel account at <strong>vercel.com</strong> — sign up with GitHub, which links both accounts in one step.</li>
+              </ul>
+              If you are unsure whether you need approval to create these accounts, check with your manager before the learning day.
+            </div>
           </div></div>
         </div>
       </div>
@@ -120,10 +120,10 @@ export default function LandingPage() {
         <div className="sec-title">What do you want to build?</div>
         <div className="sec-body">Each boilerplate is a working starting point. Pick the template closest to your area of work, or simply the one you're most energized by.</div>
         <div className="surface-grid">
-          <div className="sc"><div className="sc-thumb a"><div className="sc-tag">A · Discovery</div></div><div className="sc-body"><div className="sc-label">Boilerplate A</div><div className="sc-title">Course Discovery</div><div className="sc-desc">A conversational landing page. Build the AI-powered discovery experience — loading state, results view, and course grid.</div><div className="sc-from">Starting from: <span>Coursera homepage · conversational input</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/discovery')}>Start tutorial</button></div></div>
-          <div className="sc"><div className="sc-thumb b"><div className="sc-tag">B · Learning</div></div><div className="sc-body"><div className="sc-label">Boilerplate B</div><div className="sc-title">My Learning Dashboard</div><div className="sc-desc">The logged-in home page. Redesign how learners track progress, pick up where they left off, and see what's next.</div><div className="sc-from">Starting from: <span>Logged-in home · My Learning</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/dashboard')}>Start tutorial</button></div></div>
-          <div className="sc"><div className="sc-thumb c"><div className="sc-tag">C · Course Frame</div></div><div className="sc-body"><div className="sc-label">Boilerplate C</div><div className="sc-title">Learning Environment</div><div className="sc-desc">A three-panel course shell: reading, video, and a working AI chatbot. Challenge the hierarchy.</div><div className="sc-from">Starting from: <span>Course frame · Data, Data, Everywhere</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/courseframe')}>Start tutorial</button></div></div>
-          <div className="sc"><div className="sc-thumb d"><div className="sc-tag">D · Internal</div></div><div className="sc-body"><div className="sc-label">Boilerplate D</div><div className="sc-title">Design Team Hub</div><div className="sc-desc">This site. An internal resource and community hub for Design and Research, aimed at design managers and leadership.</div><div className="sc-from">Starting from: <span>coursera.design · this page</span></div><button className="sc-btn" onClick={() => navigate('/tutorial/internal')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb a"><div className="sc-tag">A · Discovery</div></div><div className="sc-body"><div className="sc-label">Boilerplate A</div><div className="sc-title">Course Discovery</div><div className="sc-desc">A conversational landing page. Build the AI-powered discovery experience — loading state, results view, and course grid.</div><button className="sc-btn" onClick={() => navigate('/tutorial/discovery')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb b"><div className="sc-tag">B · Learning</div></div><div className="sc-body"><div className="sc-label">Boilerplate B</div><div className="sc-title">My Learning Dashboard</div><div className="sc-desc">The logged-in home page. Redesign how learners track progress, pick up where they left off, and see what's next.</div><button className="sc-btn" onClick={() => navigate('/tutorial/dashboard')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb c"><div className="sc-tag">C · Course Frame</div></div><div className="sc-body"><div className="sc-label">Boilerplate C</div><div className="sc-title">Learning Environment</div><div className="sc-desc">A three-panel course shell: reading, video, and a working AI chatbot. Challenge the hierarchy.</div><button className="sc-btn" onClick={() => navigate('/tutorial/courseframe')}>Start tutorial</button></div></div>
+          <div className="sc"><div className="sc-thumb d"><div className="sc-tag">D · Meta</div></div><div className="sc-body"><div className="sc-label">Boilerplate D</div><div className="sc-title">Redesign the Tutorial</div><div className="sc-desc">The meta challenge. Redesign today's tutorial as an AI-native learning experience — adaptive, personalized, no pages.</div><button className="sc-btn" onClick={() => navigate('/tutorial/internal')}>Start tutorial</button></div></div>
         </div>
       </div>
 

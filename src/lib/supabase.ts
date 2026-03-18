@@ -12,8 +12,10 @@ export interface Submission {
   liked: string | null
   struggled: string | null
   description: string
+  confidence_before: number | null
   confidence: number | null
   comments: string | null
   file_url: string | null
+  vercel_url: string | null
   created_at: string
 }

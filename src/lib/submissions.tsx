@@ -56,9 +56,11 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
         description: formData.description,
         liked: formData.liked || null,
         struggled: formData.struggled || null,
+        confidence_before: formData.confidenceBefore,
         confidence: formData.confidence,
         comments: formData.comments || null,
         file_url: fileUrl,
+        vercel_url: formData.vercelUrl || null,
       })
       .select()
       .single()
