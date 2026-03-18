@@ -570,6 +570,36 @@ nav {
 }
 .back-btn:hover { color: var(--color-grey-975); }
 
+.phase-nav {
+  position: sticky;
+  top: 52px;
+  z-index: 50;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 12px calc(50vw - 50% + 40px);
+  background: var(--color-white);
+  border-bottom: 0.5px solid var(--color-grey-100);
+}
+.phase-nav-inner {
+  display: flex;
+  gap: 24px;
+  max-width: 818px;
+}
+.phase-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-grey-400);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 150ms ease;
+}
+.phase-nav a:hover {
+  color: var(--color-grey-975);
+}
+.phase-nav a.active {
+  color: var(--color-blue-700);
+}
+
 .t-hero {
   padding: 40px 40px 28px;
 }
@@ -638,7 +668,10 @@ nav {
   letter-spacing: 0.04em;
 }
 
-.phase-header { margin-bottom: 20px; }
+.phase-header {
+  margin-bottom: 20px;
+  scroll-margin-top: 112px;
+}
 .phase-title {
   font-size: 13px;
   font-weight: 600;

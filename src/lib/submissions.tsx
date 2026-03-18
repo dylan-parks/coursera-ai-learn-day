@@ -63,6 +63,10 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
       .select()
       .single()
 
+    if (error) {
+      console.error('Supabase insert error:', error)
+    }
+
     setPendingCard(null)
     if (!error && data) {
       setSubmissions(prev => [data, ...prev])
