@@ -774,23 +774,40 @@ nav {
 }
 
 .callout {
-  border-top: 0.5px solid var(--color-grey-100);
-  padding: 12px 20px;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+  padding: 4px 20px 10px 60px;
 }
-.callout.warn { background: var(--color-yellow-25); }
-.callout.info { background: var(--color-blue-25); }
+.callout.standalone {
+  padding-left: 0;
+}
+.callout-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+}
 .callout-icon {
   font-size: 13px;
   flex-shrink: 0;
-  margin-top: 1px;
+  line-height: 1;
+}
+.callout-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-grey-975);
+  line-height: 1;
 }
 .callout-text {
   font-size: 12px;
   color: var(--color-grey-600);
   line-height: 1.55;
+  padding-left: 18px;
+}
+.callout-text ul {
+  margin: 0;
+  padding-left: 14px;
+}
+.callout-text li {
+  margin-bottom: 2px;
 }
 
 .tstep-prompt {
@@ -939,10 +956,8 @@ nav {
   gap: 12px;
 }
 .optional-inner-prompt {
-  border: 0.5px solid var(--color-grey-100);
-  border-radius: 8px;
-  overflow: hidden;
   margin: 0;
+  padding-left: 0;
 }
 
 .confidence-btn {

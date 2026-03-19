@@ -70,11 +70,11 @@ export default function TutorialEnd({ onSubmit }: TutorialEndProps) {
           <div className="tstep-body">Cursor will guide you through connecting to GitHub and pushing your code. It may ask you to sign in via the browser — follow whatever it asks.</div>
         </div>
         <div className="callout info">
-          <div className="callout-icon">💡</div>
+          <div className="callout-header"><span className="callout-icon">💡</span><span className="callout-label">Tips</span></div>
           <div className="callout-text">If Cursor gets stuck or shows an error, paste the error message back into the chat and ask: <em>"This is the error I got. What do I do?"</em> It can usually diagnose and fix it.</div>
         </div>
         <div className="callout warn">
-          <div className="callout-icon">⚠️</div>
+          <div className="callout-header"><span className="callout-icon">⚠️</span><span className="callout-label">Heads up</span></div>
           <div className="callout-text"><strong>Private repos are fine for learning day.</strong> When Cursor creates the repository, it will likely be private by default — that is perfectly fine for today. Going forward, if you want to share prototypes with front-end engineers or collaborate on code, you will want to work with your team to set up a shared, more secure repository structure. For now, a private repo under your personal account is the right call.</div>
         </div>
       </div>
@@ -126,7 +126,7 @@ export default function TutorialEnd({ onSubmit }: TutorialEndProps) {
           </div>
         </div>
         <div className="callout warn">
-          <div className="callout-icon">⚠️</div>
+          <div className="callout-header"><span className="callout-icon">⚠️</span><span className="callout-label">Heads up</span></div>
           <div className="callout-text">If Vercel asks you to upgrade to a paid plan for password protection, check with your manager before proceeding. Alternatively, skip this step and just share the URL directly with people you trust — the URL is not indexed by search engines.</div>
         </div>
       </div>
