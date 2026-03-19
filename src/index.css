@@ -761,19 +761,16 @@ nav {
 }
 
 .tstep-img {
-  border-top: 0.5px solid var(--color-grey-100);
-  background: var(--color-grey-25);
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  padding: 0 20px 16px 60px;
+}
+.tstep-img img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 0.5px solid var(--color-grey-100);
 }
 .tstep-img-lbl {
-  font-size: 11px;
-  color: var(--color-grey-300);
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  display: none;
 }
 
 .callout {
@@ -797,9 +794,7 @@ nav {
 }
 
 .tstep-prompt {
-  border-top: 0.5px solid var(--color-grey-100);
-  padding: 14px 20px;
-  background: var(--color-blue-25);
+  padding: 8px 20px 16px 60px;
 }
 .prompt-lbl {
   font-size: 10px;
