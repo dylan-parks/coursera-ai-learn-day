@@ -73,6 +73,10 @@ export default function TutorialEnd({ onSubmit }: TutorialEndProps) {
           <div className="callout-icon">💡</div>
           <div className="callout-text">If Cursor gets stuck or shows an error, paste the error message back into the chat and ask: <em>"This is the error I got. What do I do?"</em> It can usually diagnose and fix it.</div>
         </div>
+        <div className="callout warn">
+          <div className="callout-icon">⚠️</div>
+          <div className="callout-text"><strong>Private repos are fine for learning day.</strong> When Cursor creates the repository, it will likely be private by default — that is perfectly fine for today. Going forward, if you want to share prototypes with front-end engineers or collaborate on code, you will want to work with your team to set up a shared, more secure repository structure. For now, a private repo under your personal account is the right call.</div>
+        </div>
       </div>
 
       <div className="tstep">
