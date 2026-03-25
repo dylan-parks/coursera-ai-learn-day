@@ -1,0 +1,15 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F5FAFF"/>
+  <rect x="140" y="140" width="1320" height="620" rx="24" fill="#EAF3FF"/>
+  <path d="M240 610H1360" stroke="#8AAEF5" stroke-width="8"/>
+  <circle cx="340" cy="610" r="26" fill="#0056D2"/>
+  <circle cx="620" cy="610" r="26" fill="#0056D2"/>
+  <circle cx="900" cy="610" r="26" fill="#0056D2"/>
+  <circle cx="1180" cy="610" r="26" fill="#0056D2"/>
+  <text x="220" y="250" fill="#0C1E40" font-family="Arial, sans-serif" font-size="54" font-weight="700">Closing / Next Steps Image Slot</text>
+  <text x="220" y="325" fill="#355C9E" font-family="Arial, sans-serif" font-size="34">Replace with generated roadmap-style artwork</text>
+  <text x="292" y="675" fill="#355C9E" font-family="Arial, sans-serif" font-size="24">Choose</text>
+  <text x="556" y="675" fill="#355C9E" font-family="Arial, sans-serif" font-size="24">Draft</text>
+  <text x="844" y="675" fill="#355C9E" font-family="Arial, sans-serif" font-size="24">Review</text>
+  <text x="1120" y="675" fill="#355C9E" font-family="Arial, sans-serif" font-size="24">Iterate</text>
+</svg>

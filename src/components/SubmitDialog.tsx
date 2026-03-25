@@ -101,7 +101,7 @@ export default function SubmitDialog({ open, onClose, onSubmit }: SubmitDialogPr
 
   return (
     <div className="fixed inset-0 bg-darken-500 flex items-center justify-center z-modal" onClick={onClose}>
-      <div className="bg-white rounded-16 w-[568px] max-h-[80vh] flex flex-col shadow-elevation-3 max-sm:w-[calc(100%-32px)] max-sm:max-h-[90vh]" onClick={e => e.stopPropagation()}>
+      <div className="bg-white rounded-16 w-[680px] max-h-[88vh] flex flex-col shadow-elevation-3 max-sm:w-[calc(100%-32px)] max-sm:max-h-[90vh]" onClick={e => e.stopPropagation()}>
 
         <div className="px-24 pt-24 flex items-start justify-between shrink-0">
           <div>

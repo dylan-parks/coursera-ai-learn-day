@@ -1,0 +1,11 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F6F9FF"/>
+  <rect x="120" y="120" width="1360" height="660" rx="24" fill="#E7F0FF"/>
+  <rect x="220" y="220" width="280" height="140" rx="16" fill="#0056D2"/>
+  <rect x="560" y="220" width="280" height="140" rx="16" fill="#4A1A6E"/>
+  <rect x="900" y="220" width="280" height="140" rx="16" fill="#007A6E"/>
+  <rect x="1240" y="220" width="220" height="140" rx="16" fill="#003D35"/>
+  <path d="M500 290H560M840 290H900M1180 290H1240" stroke="#7EA8F8" stroke-width="10"/>
+  <text x="220" y="440" fill="#0C1E40" font-family="Arial, sans-serif" font-size="54" font-weight="700">Core Concepts Image Slot</text>
+  <text x="220" y="505" fill="#355C9E" font-family="Arial, sans-serif" font-size="34">Replace with generated section artwork</text>
+</svg>
